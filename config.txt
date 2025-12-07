@@ -1,0 +1,3 @@
+OPENROUTER_API_KEY=YOUR-API-KEY-HERE
+FLASK_SECRET=wordcraf27wh2u
+OPENROUTER_MODEL=nvidia/nemotron-nano-9b-v2:free
