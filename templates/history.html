@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - WordCraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#5a3d21',
+                            gold: '#ab7a44',
+                            tan: '#d2b595',
+                            cream: '#f4eddf',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-cream text-brand-dark p-8 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-10">
+            <h1 class="text-4xl font-serif font-bold text-brand-dark">Project History</h1>
+            <a href="/" class="bg-brand-dark text-brand-cream px-5 py-2 rounded-lg hover:bg-brand-gold transition shadow-md">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Editor
+            </a>
+        </div>
+
+        <div class="space-y-6">
+            {% for row in rows %}
+            <div class="bg-white p-6 rounded-xl shadow-md border border-brand-tan/30 hover:shadow-lg transition">
+                <div class="flex justify-between mb-4 border-b border-brand-tan/20 pb-2">
+                    <span class="bg-brand-cream text-brand-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-brand-tan">
+                        {{ row['action'] }}
+                    </span>
+                    <span class="text-brand-tan text-xs font-mono">{{ row['timestamp'] }}</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-brand-tan text-xs uppercase mb-2">Original Text</h4>
+                        <div class="text-brand-dark/70 text-sm bg-brand-cream/30 p-3 rounded-lg border border-brand-tan/20 h-24 overflow-y-auto">
+                            {{ row['original_text'] }}
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-gold text-xs uppercase mb-2">AI Result</h4>
+                        <div class="text-brand-dark text-sm bg-brand-cream p-3 rounded-lg border border-brand-tan/50 h-24 overflow-y-auto">
+                            {{ row['result_text'] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="text-center py-20">
+                <i class="fas fa-history text-4xl text-brand-tan mb-4"></i>
+                <p class="text-brand-dark font-medium">No history found yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
