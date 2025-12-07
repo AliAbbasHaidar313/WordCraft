@@ -35,7 +35,7 @@
     ```
 
 3.  **Configure Environment**
-    A file named `config.txt` in the root folder and add your API key:
+    Add your Openrouter API key in `config.txt`:
     ```text
     OPENROUTER_API_KEY=your_api_key_here
     FLASK_SECRET=your_random_secret_key
